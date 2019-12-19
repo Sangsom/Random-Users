@@ -12,6 +12,7 @@
 		1B3D061A23ABB5F80035BFC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D061823ABB5F80035BFC8 /* Main.storyboard */; };
 		1B3D061C23ABB5F90035BFC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D061B23ABB5F90035BFC8 /* Assets.xcassets */; };
 		1B3D061F23ABB5F90035BFC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3D061D23ABB5F90035BFC8 /* LaunchScreen.storyboard */; };
+		1B3D062823ABB67A0035BFC8 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D062623ABB67A0035BFC8 /* UserModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1B3D061B23ABB5F90035BFC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3D061E23ABB5F90035BFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B3D062023ABB5F90035BFC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B3D062723ABB67A0035BFC8 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				1B3D061223ABB5F80035BFC8 /* AppDelegate.swift */,
 				1B3D061623ABB5F80035BFC8 /* ViewController.swift */,
 				1B3D061823ABB5F80035BFC8 /* Main.storyboard */,
+				1B3D062623ABB67A0035BFC8 /* UserModel.xcdatamodeld */,
 				1B3D061B23ABB5F90035BFC8 /* Assets.xcassets */,
 				1B3D061D23ABB5F90035BFC8 /* LaunchScreen.storyboard */,
 				1B3D062023ABB5F90035BFC8 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				1B3D061723ABB5F80035BFC8 /* ViewController.swift in Sources */,
 				1B3D061323ABB5F80035BFC8 /* AppDelegate.swift in Sources */,
+				1B3D062823ABB67A0035BFC8 /* UserModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +338,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1B3D062623ABB67A0035BFC8 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1B3D062723ABB67A0035BFC8 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = 1B3D062723ABB67A0035BFC8 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1B3D060723ABB5F80035BFC8 /* Project object */;
 }
