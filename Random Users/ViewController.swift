@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
 //    var people = [Person]()
 
+    // MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +34,16 @@ class ViewController: UIViewController {
 //        } catch {
 //
 //        }
+
+        updateUI()
     }
 
+    // MARK: - Custom methods
+
+    func updateUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Random Users"
+    }
 
 }
 
