@@ -43,7 +43,16 @@ class ViewController: UIViewController {
     func updateUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Random Users"
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addUser))
     }
 
+    // MARK: - Selector methods
+    @objc func addUser() {
+        print("Adding")
+    }
 }
 
