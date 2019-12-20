@@ -16,22 +16,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let person = Person(context: PersistanceService.context)
-        person.gender = "male"
-
-        PersistanceService.saveContext()
-
-
-        // Read
-        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
-
-        do {
-            let people = try PersistanceService.context.fetch(fetchRequest)
-
-            print(people.count)
-        } catch {
-
-        }
+//        let person = Person(context: PersistanceService.context)
+//        person.gender = "male"
+//
+//        PersistanceService.saveContext()
+//
+//
+//        // Read
+//        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+//
+//        do {
+//            let people = try PersistanceService.context.fetch(fetchRequest)
+//
+//            print(people.count)
+//        } catch {
+//
+//        }
     }
 
 
