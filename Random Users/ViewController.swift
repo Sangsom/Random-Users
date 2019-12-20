@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     // MARK: - Selector methods
     @objc func addUser() {
         let url = URL(string: "https://randomuser.me/api/")!
-
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Error on loading", error)
