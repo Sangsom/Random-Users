@@ -8,6 +8,7 @@
 
 import CoreData
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
@@ -68,5 +69,31 @@ class ViewController: UIViewController {
 
         task.resume()
     }
+
+//    @objc func fetchCommits() {
+//        let newestCommitDate = getNewestCommitDate()
+//
+//        if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100&since=\(newestCommitDate)")!) {
+//            // give the data to SwiftyJSON to parse
+//            let jsonCommits = JSON(parseJSON: data)
+//
+//            // read the commits back out
+//            let jsonCommitArray = jsonCommits.arrayValue
+//
+//            print("Received \(jsonCommitArray.count) new commits.")
+//
+//            DispatchQueue.main.async { [unowned self] in
+//                for jsonCommit in jsonCommitArray {
+//
+//                    let commit = Commit(context: self.container.viewContext)
+//                    self.configure(commit: commit, usingJSON: jsonCommit)
+//
+//                }
+//
+//                self.saveContext()
+//                self.loadSavedData()
+//            }
+//        }
+//    }
 }
 
