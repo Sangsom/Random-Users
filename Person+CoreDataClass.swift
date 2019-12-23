@@ -12,5 +12,7 @@ import CoreData
 
 @objc(Person)
 public class Person: NSManagedObject {
-
+    var fullName: String {
+        return "\(name!.first) \(name!.last)"
+    }
 }

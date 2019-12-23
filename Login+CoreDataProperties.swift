@@ -17,12 +17,12 @@ extension Login {
         return NSFetchRequest<Login>(entityName: "Login")
     }
 
-    @NSManaged public var uuid: UUID?
-    @NSManaged public var username: String?
+    @NSManaged public var md5: String?
     @NSManaged public var password: String?
     @NSManaged public var salt: String?
-    @NSManaged public var md5: String?
     @NSManaged public var sha1: String?
     @NSManaged public var sha265: String?
+    @NSManaged public var username: String?
+    @NSManaged public var uuid: UUID?
 
 }

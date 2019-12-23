@@ -17,12 +17,9 @@ extension Person {
         return NSFetchRequest<Person>(entityName: "Person")
     }
 
-    @NSManaged public var gender: String?
     @NSManaged public var email: String?
-    @NSManaged public var name: Name
+    @NSManaged public var gender: String?
     @NSManaged public var login: Login?
+    @NSManaged public var name: Name?
 
-    var fullName: String {
-        return "\(name.first) \(name.last)"
-    }
 }

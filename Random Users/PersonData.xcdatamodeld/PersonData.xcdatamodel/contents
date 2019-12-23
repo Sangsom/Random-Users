@@ -13,16 +13,17 @@
         <attribute name="first" optional="YES" attributeType="String"/>
         <attribute name="last" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="name" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <relationship name="login" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Login"/>
-        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Name"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Name" inverseName="person" inverseEntity="Name"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Name" positionX="-63" positionY="-9" width="128" height="88"/>
         <element name="Login" positionX="-45" positionY="18" width="128" height="148"/>
+        <element name="Name" positionX="-63" positionY="-9" width="128" height="103"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
