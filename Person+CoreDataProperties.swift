@@ -18,6 +18,8 @@ extension Person {
     }
 
     @NSManaged public var gender: String?
+    @NSManaged public var email: String?
     @NSManaged public var name: Name?
+    @NSManaged public var login: Login?
 
 }
