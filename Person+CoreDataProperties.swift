@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  Random Users
 //
-//  Created by Rinalds Domanovs on 19/12/2019.
+//  Created by Rinalds Domanovs on 23/12/2019.
 //  Copyright © 2019 Rinalds Domanovs. All rights reserved.
 //
 //
@@ -18,5 +18,6 @@ extension Person {
     }
 
     @NSManaged public var gender: String?
+    @NSManaged public var name: Name?
 
 }

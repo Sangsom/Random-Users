@@ -15,6 +15,8 @@
 		1B997CFC23B0A43800CC008E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1B997CFB23B0A43800CC008E /* SwiftyJSON */; };
 		1B997CFE23B0C90800CC008E /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */; };
 		1B997D0123B0CD6900CC008E /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997D0023B0CD6900CC008E /* UsersController.swift */; };
+		1B997D0423B0D5F400CC008E /* Name+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997D0223B0D5F400CC008E /* Name+CoreDataClass.swift */; };
+		1B997D0523B0D5F400CC008E /* Name+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997D0323B0D5F400CC008E /* Name+CoreDataProperties.swift */; };
 		1BA0ACB223ABBBC800699D6F /* PersonData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0ACB023ABBBC800699D6F /* PersonData.xcdatamodeld */; };
 		1BA0ACB523ABBC0400699D6F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0ACB323ABBC0400699D6F /* Person+CoreDataClass.swift */; };
 		1BA0ACB623ABBC0400699D6F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0ACB423ABBC0400699D6F /* Person+CoreDataProperties.swift */; };
@@ -30,6 +32,8 @@
 		1B3D062C23ABB8000035BFC8 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		1B997D0023B0CD6900CC008E /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
+		1B997D0223B0D5F400CC008E /* Name+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1B997D0323B0D5F400CC008E /* Name+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1BA0ACB123ABBBC800699D6F /* PersonData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonData.xcdatamodel; sourceTree = "<group>"; };
 		1BA0ACB323ABBC0400699D6F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1BA0ACB423ABBC0400699D6F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -84,6 +88,8 @@
 		1B3D063623ABB89E0035BFC8 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				1B997D0223B0D5F400CC008E /* Name+CoreDataClass.swift */,
+				1B997D0323B0D5F400CC008E /* Name+CoreDataProperties.swift */,
 				1BA0ACB323ABBC0400699D6F /* Person+CoreDataClass.swift */,
 				1BA0ACB423ABBC0400699D6F /* Person+CoreDataProperties.swift */,
 			);
@@ -182,8 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B997D0423B0D5F400CC008E /* Name+CoreDataClass.swift in Sources */,
 				1BA0ACB223ABBBC800699D6F /* PersonData.xcdatamodeld in Sources */,
 				1BA0ACB623ABBC0400699D6F /* Person+CoreDataProperties.swift in Sources */,
+				1B997D0523B0D5F400CC008E /* Name+CoreDataProperties.swift in Sources */,
 				1B997D0123B0CD6900CC008E /* UsersController.swift in Sources */,
 				1BA0ACB523ABBC0400699D6F /* Person+CoreDataClass.swift in Sources */,
 				1B3D062D23ABB8000035BFC8 /* PersistanceService.swift in Sources */,
