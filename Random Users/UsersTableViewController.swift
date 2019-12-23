@@ -11,21 +11,17 @@ import UIKit
 import SwiftyJSON
 
 class UsersTableViewController: UITableViewController {
+
+    var usersController: UsersController!
     var people = [Person]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
-
-        do {
-            let people = try PersistanceService.context.fetch(fetchRequest)
-            self.people = people
-        } catch {
-            print("Error")
-        }
+        usersController = UsersController()
 
         updateUI()
+        loadUsers()
     }
 
     // MARK: - Custom methods
@@ -38,6 +34,10 @@ class UsersTableViewController: UITableViewController {
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addUser))
+    }
+
+    func loadUsers() {
+        people = usersController.loadUsers()
     }
 
     // MARK: - Selector methods
