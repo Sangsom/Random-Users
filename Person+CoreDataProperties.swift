@@ -22,6 +22,13 @@ extension Person {
     @NSManaged public var title: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
+    @NSManaged public var uuid: UUID?
+    @NSManaged public var username: String?
+    @NSManaged public var password: String?
+    @NSManaged public var salt: String?
+    @NSManaged public var md5: String?
+    @NSManaged public var sha1: String?
+    @NSManaged public var sha256: String?
     @NSManaged public var location: Location?
 
 }

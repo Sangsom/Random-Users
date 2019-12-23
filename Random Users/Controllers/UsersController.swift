@@ -32,11 +32,18 @@ class UsersController {
 
         let json = json["results"][0]
 
+        person.uuid = UUID(uuidString: json["login"]["uuid"].stringValue)
         person.gender = json["gender"].stringValue
         person.title = json["name"]["title"].stringValue
         person.firstName = json["name"]["first"].stringValue
         person.lastName = json["name"]["last"].stringValue
         person.email = json["email"].stringValue
+        person.username = json["login"]["username"].stringValue
+        person.password =  json["login"]["password"].stringValue
+        person.salt = json["login"]["salt"].stringValue
+        person.md5 = json["login"]["md5"].stringValue
+        person.sha1 = json["login"]["sha1"].stringValue
+        person.sha256 = json["login"]["sha256"].stringValue
 
         let location = Location(context: PersistanceService.context)
         location.city = json["location"]["city"].stringValue
@@ -50,6 +57,7 @@ class UsersController {
         location.timezoneOffset = json["location"]["timezone"]["offset"].stringValue
         location.timezoneDescription = json["location"]["timezone"]["description"].stringValue
         person.location = location
+
 
         PersistanceService.saveContext()
 
