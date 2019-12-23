@@ -8,6 +8,7 @@
 
 import CoreData
 import Foundation
+import SwiftyJSON
 
 class UsersController {
 
@@ -26,4 +27,8 @@ class UsersController {
         return usersList
     }
 
+    func addUser(from json: JSON) {
+        let json = json["results"][0]
+        print("Add User", json)
+    }
 }
