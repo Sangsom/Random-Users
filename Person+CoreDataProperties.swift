@@ -22,5 +22,6 @@ extension Person {
     @NSManaged public var title: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
+    @NSManaged public var location: Location?
 
 }
