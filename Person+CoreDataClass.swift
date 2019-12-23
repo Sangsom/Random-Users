@@ -2,7 +2,7 @@
 //  Person+CoreDataClass.swift
 //  Random Users
 //
-//  Created by Rinalds Domanovs on 19/12/2019.
+//  Created by Rinalds Domanovs on 23/12/2019.
 //  Copyright © 2019 Rinalds Domanovs. All rights reserved.
 //
 //
@@ -13,6 +13,9 @@ import CoreData
 @objc(Person)
 public class Person: NSManagedObject {
     var fullName: String {
-        return "\(name!.first) \(name!.last)"
+        if let firstName = firstName, let lastName = lastName {
+            return "\(firstName) \(lastName)"
+        }
+        return "N\\A"
     }
 }

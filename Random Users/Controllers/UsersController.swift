@@ -33,24 +33,28 @@ class UsersController {
         let json = json["results"][0]
 
         person.gender = json["gender"].stringValue
+        person.title = json["name"]["title"].stringValue
+        person.firstName = json["name"]["first"].stringValue
+        person.lastName = json["name"]["last"].stringValue
+        person.email = json["email"].stringValue
 
-        let name = Name(context: PersistanceService.context)
-        name.title = json["name"]["title"].stringValue
-        name.first = json["name"]["first"].stringValue
-        name.last = json["name"]["last"].stringValue
+//        let name = Name(context: PersistanceService.context)
+//        name.title = json["name"]["title"].stringValue
+//        name.first = json["name"]["first"].stringValue
+//        name.last = json["name"]["last"].stringValue
 
-        let login = Login(context: PersistanceService.context)
-        let uuid = UUID(uuidString: json["login"]["uuid"].stringValue)
-        login.uuid = uuid
-        login.username = json["login"]["username"].stringValue
-        login.password = json["login"]["password"].stringValue
-        login.salt = json["login"]["salt"].stringValue
-        login.md5 = json["login"]["md5"].stringValue
-        login.sha1 = json["login"]["sha1"].stringValue
-        login.sha265 = json["login"]["sha256"].stringValue
-
-        person.name = name
-        person.login = login
+//        let login = Login(context: PersistanceService.context)
+//        let uuid = UUID(uuidString: json["login"]["uuid"].stringValue)
+//        login.uuid = uuid
+//        login.username = json["login"]["username"].stringValue
+//        login.password = json["login"]["password"].stringValue
+//        login.salt = json["login"]["salt"].stringValue
+//        login.md5 = json["login"]["md5"].stringValue
+//        login.sha1 = json["login"]["sha1"].stringValue
+//        login.sha265 = json["login"]["sha256"].stringValue
+//
+//        person.name = name
+//        person.login = login
 
         PersistanceService.saveContext()
 
