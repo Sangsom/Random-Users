@@ -36,6 +36,7 @@ class ViewController: UITableViewController {
 //
 //        }
 
+        tableView.delegate = self
         updateUI()
     }
 
@@ -101,3 +102,6 @@ class ViewController: UITableViewController {
 //    }
 }
 
+extension UITableViewController{
+
+}
