@@ -60,9 +60,13 @@ class ViewController: UIViewController {
                 print("Error on loading", error)
             }
 
-            if let data = data,
-                let string = String(data: data, encoding: .utf8) {
-                print(string)
+            if let data = try? JSON(data: data!) {
+                let json = data["results"][0]
+
+                DispatchQueue.main.async {
+                    // Add to core data
+
+                }
             }
 
         }
