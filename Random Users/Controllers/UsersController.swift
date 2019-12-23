@@ -38,27 +38,22 @@ class UsersController {
         person.lastName = json["name"]["last"].stringValue
         person.email = json["email"].stringValue
 
-//        let name = Name(context: PersistanceService.context)
-//        name.title = json["name"]["title"].stringValue
-//        name.first = json["name"]["first"].stringValue
-//        name.last = json["name"]["last"].stringValue
-
-//        let login = Login(context: PersistanceService.context)
-//        let uuid = UUID(uuidString: json["login"]["uuid"].stringValue)
-//        login.uuid = uuid
-//        login.username = json["login"]["username"].stringValue
-//        login.password = json["login"]["password"].stringValue
-//        login.salt = json["login"]["salt"].stringValue
-//        login.md5 = json["login"]["md5"].stringValue
-//        login.sha1 = json["login"]["sha1"].stringValue
-//        login.sha265 = json["login"]["sha256"].stringValue
-//
-//        person.name = name
-//        person.login = login
+        let location = Location(context: PersistanceService.context)
+        location.city = json["location"]["city"].stringValue
+        location.state = json["location"]["state"].stringValue
+        location.country = json["location"]["country"].stringValue
+        location.postcode = json["location"]["postcode"].stringValue
+        location.streetName = json["location"]["street"]["name"].stringValue
+        location.streetNumber = json["location"]["street"]["number"].int16Value
+        location.latitude = json["location"]["coordinates"]["latitude"].stringValue
+        location.longitude = json["location"]["coordinates"]["longitude"].stringValue
+        location.timezoneOffset = json["location"]["timezone"]["offset"].stringValue
+        location.timezoneDescription = json["location"]["timezone"]["description"].stringValue
+        person.location = location
 
         PersistanceService.saveContext()
 
-        print("Add User", json)
+        print("Add User", person)
 
         return person
     }
