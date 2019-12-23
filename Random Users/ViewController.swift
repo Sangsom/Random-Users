@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
 //    var people = [Person]()
 
