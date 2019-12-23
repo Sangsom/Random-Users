@@ -6,19 +6,67 @@
 //  Copyright © 2019 Rinalds Domanovs. All rights reserved.
 //
 
+import CoreData
 import UIKit
+import SwiftyJSON
 
 class UsersTableViewController: UITableViewController {
+    var people = [Person]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print("Loaded")
+        do {
+            let people = try PersistanceService.context.fetch(fetchRequest)
+            self.people = people
+        } catch {
+            print("Error")
+        }
+
+        updateUI()
+    }
+
+    // MARK: - Custom methods
+
+    func updateUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Random Users"
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addUser))
+    }
+
+    // MARK: - Selector methods
+    @objc func addUser() {
+        let url = URL(string: "https://randomuser.me/api/")!
+
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("Error on loading", error)
+            }
+
+            if let data = try? JSON(data: data!) {
+                let json = data["results"][0]
+                print(json)
+
+                DispatchQueue.main.async {
+                    // Add to core data
+                    let person = Person(context: PersistanceService.context)
+                    person.gender = json["gender"].stringValue
+                    
+                    self.people.append(person)
+                    PersistanceService.saveContext()
+                    self.tableView.reloadData()
+                }
+            }
+        }
+
+        task.resume()
+
     }
 }
 
@@ -26,12 +74,16 @@ extension UsersTableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return people.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath)
+        cell.textLabel?.text = people[indexPath.row].gender
+        return cell
     }
 }
