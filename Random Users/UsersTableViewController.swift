@@ -50,17 +50,11 @@ class UsersTableViewController: UITableViewController {
             }
 
             if let data = try? JSON(data: data!) {
-                self.usersController.addUser(from: data)
-
-//                DispatchQueue.main.async {
-//                    // Add to core data
-//                    let person = Person(context: PersistanceService.context)
-//                    person.gender = json["gender"].stringValue
-//
-//                    self.people.append(person)
-//                    PersistanceService.saveContext()
-//                    self.tableView.reloadData()
-//                }
+                DispatchQueue.main.async {
+                    let addedPerson = self.usersController.addUser(from: data)
+                    self.people.append(addedPerson)
+                    self.tableView.reloadData()
+                }
             }
         }
 

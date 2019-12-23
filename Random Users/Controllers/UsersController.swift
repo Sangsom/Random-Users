@@ -27,8 +27,16 @@ class UsersController {
         return usersList
     }
 
-    func addUser(from json: JSON) {
+    func addUser(from json: JSON) -> Person {
+        let person = Person(context: PersistanceService.context)
         let json = json["results"][0]
+
+            person.gender = json["gender"].stringValue
+
+            PersistanceService.saveContext()
+
         print("Add User", json)
+
+        return person
     }
 }
