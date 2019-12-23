@@ -76,7 +76,7 @@ extension UsersTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath)
-        cell.textLabel?.text = people[indexPath.row].name?.first
+        cell.textLabel?.text = people[indexPath.row].fullName
         return cell
     }
 }
