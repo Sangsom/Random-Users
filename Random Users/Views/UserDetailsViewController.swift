@@ -10,9 +10,12 @@ import UIKit
 
 class UserDetailsViewController: UIViewController {
 
+    var user: Person!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Opening", user.fullName)
         // Do any additional setup after loading the view.
     }
     

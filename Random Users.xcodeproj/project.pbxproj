@@ -74,18 +74,17 @@
 		1B3D061123ABB5F80035BFC8 /* Random Users */ = {
 			isa = PBXGroup;
 			children = (
+				1B77715F23B6226F00A55977 /* Views */,
 				1B997CFF23B0CD4600CC008E /* Controllers */,
 				1BCB7AF223ACD7BA00BEDE42 /* SupportFiles */,
 				1BA0ACB023ABBBC800699D6F /* PersonData.xcdatamodeld */,
 				1B3D063623ABB89E0035BFC8 /* Core Data */,
 				1B3D061223ABB5F80035BFC8 /* AppDelegate.swift */,
-				1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */,
 				1B3D062C23ABB8000035BFC8 /* PersistanceService.swift */,
 				1B3D061823ABB5F80035BFC8 /* Main.storyboard */,
 				1B3D061B23ABB5F90035BFC8 /* Assets.xcassets */,
 				1B3D061D23ABB5F90035BFC8 /* LaunchScreen.storyboard */,
 				1B3D062023ABB5F90035BFC8 /* Info.plist */,
-				1B77715D23B621B800A55977 /* UserDetailsViewController.swift */,
 			);
 			path = "Random Users";
 			sourceTree = "<group>";
@@ -99,6 +98,15 @@
 				1B56E83823B13EA5008E79C7 /* Person+CoreDataProperties.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		1B77715F23B6226F00A55977 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */,
+				1B77715D23B621B800A55977 /* UserDetailsViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1B997CFF23B0CD4600CC008E /* Controllers */ = {
