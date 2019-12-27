@@ -6,7 +6,6 @@
 //  Copyright © 2019 Rinalds Domanovs. All rights reserved.
 //
 
-import CoreData
 import UIKit
 import SwiftyJSON
 

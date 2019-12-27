@@ -13,6 +13,6 @@ import CoreData
 @objc(Person)
 public class Person: NSManagedObject {
     var fullName: String {
-        return "Rino \(firstName!) \(lastName!)"
+        return "\(firstName!) \(lastName!)"
     }
 }
