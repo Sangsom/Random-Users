@@ -14,12 +14,18 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="location" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="cellphone" optional="YES" attributeType="String"/>
+        <attribute name="dob" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="md5" optional="YES" attributeType="String"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="URI"/>
+        <attribute name="registered" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="salt" optional="YES" attributeType="String"/>
         <attribute name="sha1" optional="YES" attributeType="String"/>
         <attribute name="sha256" optional="YES" attributeType="String"/>
@@ -29,7 +35,7 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="person" inverseEntity="Location"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="238"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="328"/>
         <element name="Location" positionX="-54" positionY="27" width="128" height="208"/>
     </elements>
 </model>

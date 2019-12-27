@@ -44,6 +44,24 @@ class UsersController {
         person.md5 = json["login"]["md5"].stringValue
         person.sha1 = json["login"]["sha1"].stringValue
         person.sha256 = json["login"]["sha256"].stringValue
+        person.nationality = json["nat"].stringValue
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+
+        let dob = json["dob"]["date"].stringValue
+        let dobDate = dateFormatter.date(from: dob)
+        person.dob = dobDate
+
+        let registered = json["registered"]["date"].stringValue
+        let registeredDate = dateFormatter.date(from: registered)
+        person.registered = registeredDate
+
+        person.phone = json["phone"].stringValue
+        person.cellphone = json["cell"].stringValue
+
+        let pictureURL = URL(string: json["picture"]["large"].stringValue)
+        person.picture = pictureURL
 
         let location = Location(context: PersistanceService.context)
         location.city = json["location"]["city"].stringValue
@@ -57,7 +75,6 @@ class UsersController {
         location.timezoneOffset = json["location"]["timezone"]["offset"].stringValue
         location.timezoneDescription = json["location"]["timezone"]["description"].stringValue
         person.location = location
-
 
         PersistanceService.saveContext()
 

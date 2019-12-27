@@ -29,6 +29,12 @@ extension Person {
     @NSManaged public var md5: String?
     @NSManaged public var sha1: String?
     @NSManaged public var sha256: String?
+    @NSManaged public var dob: Date?
+    @NSManaged public var registered: Date?
+    @NSManaged public var phone: String?
+    @NSManaged public var cellphone: String?
+    @NSManaged public var nationality: String?
+    @NSManaged public var picture: URL?
     @NSManaged public var location: Location?
 
 }

@@ -77,6 +77,11 @@ extension UsersTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath)
         cell.textLabel?.text = people[indexPath.row].fullName
+        if let dob = people[indexPath.row].dob {
+            cell.detailTextLabel?.text = "\(dob)"
+        } else {
+            cell.detailTextLabel?.text = "N\\A"
+        }
         return cell
     }
 }
