@@ -14,7 +14,5 @@ import CoreData
 public class Person: NSManagedObject {
     var fullName: String {
         return "Rino \(firstName!) \(lastName!)"
-
     }
-
 }
