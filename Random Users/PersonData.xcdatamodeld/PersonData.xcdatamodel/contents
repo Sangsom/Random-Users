@@ -35,7 +35,7 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="person" inverseEntity="Location"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="328"/>
         <element name="Location" positionX="-54" positionY="27" width="128" height="208"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="328"/>
     </elements>
 </model>
