@@ -34,6 +34,7 @@
 		1B56E83823B13EA5008E79C7 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1B56E83B23B14100008E79C7 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1B56E83C23B14100008E79C7 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1B77715C23B6106300A55977 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		1B997D0023B0CD6900CC008E /* UsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		1BA0ACB123ABBBC800699D6F /* PersonData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonData.xcdatamodel; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		1B3D060623ABB5F80035BFC8 = {
 			isa = PBXGroup;
 			children = (
+				1B77715C23B6106300A55977 /* README.md */,
 				1B3D061123ABB5F80035BFC8 /* Random Users */,
 				1B3D061023ABB5F80035BFC8 /* Products */,
 			);
