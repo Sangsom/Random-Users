@@ -10,7 +10,14 @@ import UIKit
 
 class UserDetailsHeaderView: UIView {
 
+    var imageURL: URL!
     let label = UILabel(frame: .zero)
+
+    lazy var profileImage: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.load(from: imageURL)
+        return imageView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
