@@ -10,10 +10,12 @@ import UIKit
 
 class UserDetailsViewController: UIViewController {
 
+    // MARK: - Properties
     var user: Person!
     var tableView: UITableView!
     var headerView: UserDetailsHeaderView!
 
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,8 @@ class UserDetailsViewController: UIViewController {
         setupHeader()
         setupTableView()
     }
+
+    // MARK: - Custom methods
 
     func setupHeader() {
         headerView = UserDetailsHeaderView(frame: .zero, name: "Rinalds Domanovs")
@@ -57,6 +61,7 @@ class UserDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension UserDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
