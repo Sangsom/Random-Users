@@ -27,7 +27,7 @@ class UserDetailsViewController: UIViewController {
     // MARK: - Custom methods
 
     func setupHeader() {
-        headerView = UserDetailsHeaderView(frame: .zero, name: "Rinalds Domanovs")
+        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName)
         headerView.translatesAutoresizingMaskIntoConstraints = false
          view.addSubview(headerView)
 
