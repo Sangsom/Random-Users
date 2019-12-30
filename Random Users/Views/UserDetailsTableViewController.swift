@@ -11,15 +11,29 @@ import UIKit
 class UserDetailsTableViewController: UITableViewController {
 
     var user: Person!
+    var headerView: UserDetailsHeaderView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let headerView = UserDetailsHeaderView(frame: .zero)
-        headerView.imageURL = user.picture!
-        headerView.configure(text: "I am the main header view\nI am second line\nHell yeah")
+
+//        tableView.tableHeaderView = headerView
+//        tableView.tableHeaderView?.backgroundColor = .red
+        setupHeader()
+    }
+
+    func setupHeader() {
+        headerView = UserDetailsHeaderView(frame: .zero, name: "Rinalds Domanovs")
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
-        tableView.tableHeaderView?.backgroundColor = .red
+
+       // view.addSubview(headerView)
+
+        let headerViewConstraints = [
+            headerView.heightAnchor.constraint(equalToConstant: 50),
+        ]
+
+        NSLayoutConstraint.activate(headerViewConstraints)
     }
 }
 
