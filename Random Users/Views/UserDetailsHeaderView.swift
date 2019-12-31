@@ -15,12 +15,14 @@ class UserDetailsHeaderView: UIView {
 //        imageView.load(from: self.imageURL!)
 //        return imageView
 //    }()
+    var image = UIImage()
     var nameLabel = UILabel()
 
-    init(frame: CGRect, name: String) {
+    init(frame: CGRect, name: String, imageURL: URL) {
         self.nameLabel.text = name
         super.init(frame: frame)
         setupView()
+        print(name, imageURL)
     }
 
     required init?(coder: NSCoder) {
