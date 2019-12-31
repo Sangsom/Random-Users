@@ -24,7 +24,6 @@ class UserDetailsHeaderView: UIView {
         self.imageURL = imageURL
         super.init(frame: frame)
         setupView()
-        print(name, imageURL)
     }
 
     required init?(coder: NSCoder) {
@@ -59,7 +58,8 @@ class UserDetailsHeaderView: UIView {
         imageView.contentMode = .scaleAspectFit
 
         imageView.makeRoundCorners(byRadius: imageSize / 2)
-        print(imageView.constraints)
+        imageView.layer.borderWidth = 3.0
+        imageView.layer.borderColor = UIColor.white.cgColor
     }
 
     func setupNameLabel() {
