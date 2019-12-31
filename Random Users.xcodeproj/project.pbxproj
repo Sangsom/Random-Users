@@ -17,6 +17,7 @@
 		1B56E83D23B14100008E79C7 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56E83B23B14100008E79C7 /* Location+CoreDataClass.swift */; };
 		1B56E83E23B14100008E79C7 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56E83C23B14100008E79C7 /* Location+CoreDataProperties.swift */; };
 		1B6B678C23BA17B1003F9E07 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6B678B23BA17B1003F9E07 /* UserDetailsViewController.swift */; };
+		1B6B678E23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6B678D23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift */; };
 		1B72FFE023B62F6C00FA60BA /* UserDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B72FFDF23B62F6C00FA60BA /* UserDetailsHeaderView.swift */; };
 		1B997CFC23B0A43800CC008E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1B997CFB23B0A43800CC008E /* SwiftyJSON */; };
 		1B997CFE23B0C90800CC008E /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */; };
@@ -38,6 +39,7 @@
 		1B56E83B23B14100008E79C7 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1B56E83C23B14100008E79C7 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1B6B678B23BA17B1003F9E07 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		1B6B678D23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+makeRoundCorners.swift"; sourceTree = "<group>"; };
 		1B72FFDF23B62F6C00FA60BA /* UserDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeaderView.swift; sourceTree = "<group>"; };
 		1B77715C23B6106300A55977 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				1BBE607B23B85E95006C1B83 /* UIImageView+load.swift */,
+				1B6B678D23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				1B56E83A23B13EA5008E79C7 /* Person+CoreDataProperties.swift in Sources */,
 				1BA0ACB223ABBBC800699D6F /* PersonData.xcdatamodeld in Sources */,
 				1B997D0123B0CD6900CC008E /* UsersController.swift in Sources */,
+				1B6B678E23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift in Sources */,
 				1B56E83923B13EA5008E79C7 /* Person+CoreDataClass.swift in Sources */,
 				1B56E83D23B14100008E79C7 /* Location+CoreDataClass.swift in Sources */,
 				1B56E83E23B14100008E79C7 /* Location+CoreDataProperties.swift in Sources */,

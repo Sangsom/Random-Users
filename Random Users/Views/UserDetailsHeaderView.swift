@@ -15,6 +15,7 @@ class UserDetailsHeaderView: UIView {
     var imageView = UIImageView()
     var imageURL: URL?
     var nameLabel = UILabel()
+    var imageSize: CGFloat = 110
 
     // MARK: - Required methods
 
@@ -46,17 +47,19 @@ class UserDetailsHeaderView: UIView {
         addSubview(imageView)
 
         let constraints = [
-            imageView.heightAnchor.constraint(equalToConstant: 110),
-            imageView.widthAnchor.constraint(equalToConstant: 110),
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            imageView.heightAnchor.constraint(equalToConstant: imageSize),
+            imageView.widthAnchor.constraint(equalToConstant: imageSize),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 8)
         ]
 
         NSLayoutConstraint.activate(constraints)
 
         imageView.load(from: imageURL)
         imageView.contentMode = .scaleAspectFit
+
+        imageView.makeRoundCorners(byRadius: imageSize / 2)
+        print(imageView.constraints)
     }
 
     func setupNameLabel() {
