@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Models
 struct Section {
     var title: String
     var fields: [UserData]
@@ -34,6 +35,8 @@ class UserDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupSectionData()
 
+        print(user.location)
+
         setupHeader()
         setupTableView()
     }
@@ -57,11 +60,19 @@ class UserDetailsViewController: UIViewController {
         let personalDetailsSection = Section(title: "Personal Details", fields: personalDetailsFields)
 
         // Address
-        //var addressSection = Section(title: "Address", fields: ["street": "Mazcenu", "city": "Jaunmarupe"])
+        let addressFields = [
+            UserData(type: "street", value: "\(user.location!.streetName!), \(user.location!.streetNumber)"),
+            UserData(type: "city", value: user!.location!.city!),
+            UserData(type: "state", value: user.location?.state ?? "N/A"),
+            UserData(type: "country", value: user.location!.country!),
+            UserData(type: "postcode", value: user.location!.postcode!)
+        ]
+        let addressSection = Section(title: "Address Details", fields: addressFields)
 
         // Login details
 
         sections.append(personalDetailsSection)
+        sections.append(addressSection)
     }
 
     func setupHeader() {
