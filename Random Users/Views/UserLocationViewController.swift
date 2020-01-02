@@ -30,7 +30,6 @@ class UserLocationViewController: UIViewController {
 
     // MARK: - Custom methods
     func setupUI() {
-        self.view.backgroundColor = .white
         setupMapView()
     }
 
