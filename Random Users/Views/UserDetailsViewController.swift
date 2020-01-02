@@ -10,7 +10,7 @@ import UIKit
 
 struct Section {
     var title: String
-    var fields: [String]
+    var fields: [String: String]
 }
 
 class UserDetailsViewController: UIViewController {
@@ -37,10 +37,10 @@ class UserDetailsViewController: UIViewController {
 
     func setupSectionData() {
         // Personal details
-        var personalDetailsSection = Section(title: "Personal Details", fields: ["One", "Two"])
+        var personalDetailsSection = Section(title: "Personal Details", fields: ["name": "Rinalds", "last": "Domanovs"])
 
         // Address
-        var addressSection = Section(title: "Address", fields: ["one", "two"])
+        var addressSection = Section(title: "Address", fields: ["street": "Mazcenu", "city": "Jaunmarupe"])
 
         // Login details
 
@@ -98,8 +98,13 @@ extension UserDetailsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sectionData = sections[indexPath.section]
+        let sectionKey = Array(sectionData.fields.keys)[indexPath.row]
+        let sectionValue = Array(sectionData.fields.values)[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = sections[indexPath.section].fields[indexPath.row]
+       // cell.textLabel?.text = sections[indexPath.section].fields[indexPath.row]
+        cell.textLabel?.text = "\(sectionKey): \(sectionValue)"
         return cell
     }
 }
