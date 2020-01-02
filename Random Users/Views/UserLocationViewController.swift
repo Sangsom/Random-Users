@@ -42,5 +42,11 @@ class UserLocationViewController: UIViewController {
           ]
 
         NSLayoutConstraint.activate(constraints)
+
+        mapView.delegate = self
     }
+}
+
+extension UserLocationViewController: MKMapViewDelegate {
+
 }
