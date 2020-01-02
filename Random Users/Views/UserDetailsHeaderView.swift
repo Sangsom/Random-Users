@@ -92,5 +92,13 @@ class UserDetailsHeaderView: UIView {
         NSLayoutConstraint.activate(constraints)
 
         mapButton.setTitle("Show on Map", for: .normal)
+        mapButton.addTarget(self, action: #selector(showMap), for: .touchUpInside)
+    }
+
+    // MARK: - @Objc methods
+
+    @objc func showMap() {
+        // Open map view
+        // Pass location coordinates
     }
 }
