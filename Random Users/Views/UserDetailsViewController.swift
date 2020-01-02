@@ -147,6 +147,7 @@ extension UserDetailsViewController: ChildNavigationDelegate {
     func navigateToCustomViewController() {
         let vc = UserLocationViewController()
         vc.modalPresentationStyle = .fullScreen
+        vc.name = user.fullName
         navigationController?.pushViewController(vc, animated: true)
     }
 }

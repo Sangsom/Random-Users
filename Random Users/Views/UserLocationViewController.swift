@@ -13,6 +13,11 @@ class UserLocationViewController: UIViewController {
 
     // MARK: - Properties
     var mapView: MKMapView!
+    var name: String! {
+        didSet {
+            title = name
+        }
+    }
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -24,8 +29,6 @@ class UserLocationViewController: UIViewController {
     // MARK: - Custom methods
     func setupUI() {
         self.view.backgroundColor = .white
-        title = "Rino"
-
         setupMapView()
     }
 
