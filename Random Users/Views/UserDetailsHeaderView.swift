@@ -12,6 +12,8 @@ class UserDetailsHeaderView: UIView {
 
     // MARK: - Properties
 
+    weak var delegate: ChildNavigationDelegate?
+
     var imageView = UIImageView()
     var imageURL: URL?
     var nameLabel = UILabel()
@@ -99,6 +101,8 @@ class UserDetailsHeaderView: UIView {
 
     @objc func showMap() {
         // Open map view
+        delegate?.navigateToCustomViewController()
+        
         // Pass location coordinates
     }
 }

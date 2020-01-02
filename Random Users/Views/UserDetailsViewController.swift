@@ -80,6 +80,7 @@ class UserDetailsViewController: UIViewController {
 
     func setupHeader() {
         headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!)
+        headerView.delegate = self
         headerView.translatesAutoresizingMaskIntoConstraints = false
          view.addSubview(headerView)
 
@@ -140,4 +141,17 @@ extension UserDetailsViewController: UITableViewDataSource {
 
 extension UserDetailsViewController: UITableViewDelegate {
 
+}
+
+extension UserDetailsViewController: ChildNavigationDelegate {
+    func navigateToCustomViewController() {
+        let vc = UserLocationViewController()
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - Protocols
+protocol ChildNavigationDelegate: class {
+    func navigateToCustomViewController()
 }
