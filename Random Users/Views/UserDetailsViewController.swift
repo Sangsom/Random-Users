@@ -35,8 +35,6 @@ class UserDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupSectionData()
 
-        print(user.location)
-
         setupHeader()
         setupTableView()
     }
@@ -49,13 +47,11 @@ class UserDetailsViewController: UIViewController {
 
         // Personal details
         let personalDetailsFields = [
-            UserData(type: "email", value: user.email!),
             UserData(type: "gender", value: user.gender!),
             UserData(type: "nationality", value: user.nationality!),
             UserData(type: "phone", value: user.phone!),
             UserData(type: "cell", value: user.cellphone!),
             UserData(type: "birthday", value: dateFormatter.string(from: user.dob!)),
-            UserData(type: "registered", value: dateFormatter.string(from: user.registered!))
         ]
         let personalDetailsSection = Section(title: "Personal Details", fields: personalDetailsFields)
 
@@ -70,9 +66,16 @@ class UserDetailsViewController: UIViewController {
         let addressSection = Section(title: "Address Details", fields: addressFields)
 
         // Login details
+        let loginFields = [
+            UserData(type: "email", value: user.email!),
+            UserData(type: "username", value: " \(user.username!)"),
+            UserData(type: "registered", value: dateFormatter.string(from: user.registered!))
+        ]
+        let loginSection = Section(title: "Login Details", fields: loginFields)
 
         sections.append(personalDetailsSection)
         sections.append(addressSection)
+        sections.append(loginSection)
     }
 
     func setupHeader() {
