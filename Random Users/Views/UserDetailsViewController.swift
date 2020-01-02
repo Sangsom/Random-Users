@@ -10,7 +10,12 @@ import UIKit
 
 struct Section {
     var title: String
-    var fields: [String: String]
+    var fields: [UserData]
+}
+
+struct UserData {
+    var type: String
+    var value: String
 }
 
 class UserDetailsViewController: UIViewController {
@@ -36,16 +41,27 @@ class UserDetailsViewController: UIViewController {
     // MARK: - Custom methods
 
     func setupSectionData() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+
         // Personal details
-        var personalDetailsSection = Section(title: "Personal Details", fields: ["name": "Rinalds", "last": "Domanovs"])
+        let personalDetailsFields = [
+            UserData(type: "email", value: user.email!),
+            UserData(type: "gender", value: user.gender!),
+            UserData(type: "nationality", value: user.nationality!),
+            UserData(type: "phone", value: user.phone!),
+            UserData(type: "cell", value: user.cellphone!),
+            UserData(type: "birthday", value: dateFormatter.string(from: user.dob!)),
+            UserData(type: "registered", value: dateFormatter.string(from: user.registered!))
+        ]
+        let personalDetailsSection = Section(title: "Personal Details", fields: personalDetailsFields)
 
         // Address
-        var addressSection = Section(title: "Address", fields: ["street": "Mazcenu", "city": "Jaunmarupe"])
+        //var addressSection = Section(title: "Address", fields: ["street": "Mazcenu", "city": "Jaunmarupe"])
 
         // Login details
 
         sections.append(personalDetailsSection)
-        sections.append(addressSection)
     }
 
     func setupHeader() {
@@ -99,12 +115,11 @@ extension UserDetailsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionData = sections[indexPath.section]
-        let sectionKey = Array(sectionData.fields.keys)[indexPath.row]
-        let sectionValue = Array(sectionData.fields.values)[indexPath.row]
+        let dataType = sectionData.fields[indexPath.row].type
+        let dataValue = sectionData.fields[indexPath.row].value
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-       // cell.textLabel?.text = sections[indexPath.section].fields[indexPath.row]
-        cell.textLabel?.text = "\(sectionKey): \(sectionValue)"
+        cell.textLabel?.text = "\(dataType): \(dataValue)"
         return cell
     }
 }
