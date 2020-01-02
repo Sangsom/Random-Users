@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Section {
+    var title: String
+    var fields: [String]
+}
+
 class UserDetailsViewController: UIViewController {
 
     // MARK: - Properties
@@ -15,16 +20,33 @@ class UserDetailsViewController: UIViewController {
     var tableView: UITableView!
     var headerView: UserDetailsHeaderView!
 
+    var sections = [Section]()
+
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSectionData()
+
         setupHeader()
         setupTableView()
     }
 
     // MARK: - Custom methods
+
+    func setupSectionData() {
+        // Personal details
+        var personalDetailsSection = Section(title: "Personal Details", fields: ["One", "Two"])
+
+        // Address
+        var addressSection = Section(title: "Address", fields: ["one", "two"])
+
+        // Login details
+
+        sections.append(personalDetailsSection)
+        sections.append(addressSection)
+    }
 
     func setupHeader() {
         headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!)
@@ -64,16 +86,20 @@ class UserDetailsViewController: UIViewController {
 // MARK: - Extensions
 extension UserDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return sections[section].fields.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Article \(indexPath.row)"
+        cell.textLabel?.text = sections[indexPath.section].fields[indexPath.row]
         return cell
     }
 }
