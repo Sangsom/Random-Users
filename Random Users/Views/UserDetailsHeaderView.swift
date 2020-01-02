@@ -15,6 +15,7 @@ class UserDetailsHeaderView: UIView {
     var imageView = UIImageView()
     var imageURL: URL?
     var nameLabel = UILabel()
+    var mapButton = UIButton(type: .system)
     var imageSize: CGFloat = 110
 
     // MARK: - Required methods
@@ -37,6 +38,7 @@ class UserDetailsHeaderView: UIView {
 
         setupImageView()
         setupNameLabel()
+        setupMapButton()
     }
 
     func setupImageView() {
@@ -76,5 +78,19 @@ class UserDetailsHeaderView: UIView {
         nameLabel.font = UIFont.systemFont(ofSize: 15)
         nameLabel.textAlignment = .center
         nameLabel.backgroundColor = .green
+    }
+
+    func setupMapButton() {
+        mapButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(mapButton)
+
+        let constraints = [
+            mapButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            mapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        mapButton.setTitle("Show on Map", for: .normal)
     }
 }
