@@ -36,7 +36,7 @@ class UserDetailsHeaderView: UIView {
     // MARK: - Custom methods
 
     func setupView() {
-        self.backgroundColor = .red
+        self.backgroundColor = UIColor(hue: 15 / 360, saturation: 0.69, brightness: 1, alpha: 0.33)
 
         setupImageView()
         setupNameLabel()
