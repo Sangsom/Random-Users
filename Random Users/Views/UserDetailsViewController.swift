@@ -134,7 +134,7 @@ extension UserDetailsViewController: UITableViewDataSource {
         let dataValue = sectionData.fields[indexPath.row].value
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(dataType): \(dataValue)"
+        cell.textLabel?.text = "\(dataType.capitalized): \(dataValue)"
         return cell
     }
 }
