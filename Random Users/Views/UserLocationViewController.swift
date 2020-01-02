@@ -18,6 +18,8 @@ class UserLocationViewController: UIViewController {
             title = name
         }
     }
+    var longitude: String!
+    var latitude: String!
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -47,9 +49,30 @@ class UserLocationViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
 
         mapView.delegate = self
+
+        let lat = (latitude as NSString).doubleValue
+        let lon = (longitude as NSString).doubleValue
+        let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))
+        let userLocation = UserLocation(title: name, coordinate: locationCoordinate)
+        mapView.setCenter(locationCoordinate, animated: true)
+        mapView.addAnnotation(userLocation)
     }
 }
 
+// MARK: - Delegates
 extension UserLocationViewController: MKMapViewDelegate {
 
+}
+
+// MARK: - UserLocation Annotation
+class UserLocation: NSObject, MKAnnotation {
+    let title: String?
+    let coordinate: CLLocationCoordinate2D
+
+    init(title: String, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
+
+        super.init()
+    }
 }

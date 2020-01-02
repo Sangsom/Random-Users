@@ -148,6 +148,8 @@ extension UserDetailsViewController: ChildNavigationDelegate {
         let vc = UserLocationViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.name = user.fullName
+        vc.longitude = user.location?.longitude
+        vc.latitude = user.location?.latitude
         navigationController?.pushViewController(vc, animated: true)
     }
 }
