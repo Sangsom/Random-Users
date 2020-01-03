@@ -87,7 +87,7 @@ extension UsersTableViewController {
 
         let countryCode = people[indexPath.row].nationality!
         let flag = Flag(countryCode: countryCode)!
-        cell.imageView?.image = flag.image(style: .circle)
+        cell.imageView?.image = flag.image(style: .roundedRect)
 
         return cell
     }
