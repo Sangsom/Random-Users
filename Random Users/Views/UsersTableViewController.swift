@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import FlagKit
 
 class UsersTableViewController: UITableViewController {
 
@@ -83,6 +84,10 @@ extension UsersTableViewController {
         } else {
             cell.detailTextLabel?.text = "N\\A"
         }
+
+        let countryCode = people[indexPath.row].nationality!
+        let flag = Flag(countryCode: countryCode)!
+        cell.imageView?.image = flag.image(style: .circle)
 
         return cell
     }
