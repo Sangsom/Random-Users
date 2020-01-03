@@ -79,7 +79,7 @@ class UserDetailsViewController: UIViewController {
     }
 
     func setupHeader() {
-        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!)
+        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!, nationality: user.nationality!)
         headerView.delegate = self
         headerView.translatesAutoresizingMaskIntoConstraints = false
          view.addSubview(headerView)

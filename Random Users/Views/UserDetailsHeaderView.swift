@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FlagKit
 
 class UserDetailsHeaderView: UIView {
 
@@ -15,16 +16,19 @@ class UserDetailsHeaderView: UIView {
     weak var delegate: ChildNavigationDelegate?
 
     var imageView = UIImageView()
+    var flagImageView = UIImageView()
     var imageURL: URL?
+    var nationality: String?
     var nameLabel = UILabel()
     var mapButton = UIButton(type: .system)
     var imageSize: CGFloat = 110
 
     // MARK: - Required methods
 
-    init(frame: CGRect, name: String, imageURL: URL) {
+    init(frame: CGRect, name: String, imageURL: URL, nationality: String) {
         self.nameLabel.text = name
         self.imageURL = imageURL
+        self.nationality = nationality
         super.init(frame: frame)
         setupView()
     }
@@ -38,6 +42,7 @@ class UserDetailsHeaderView: UIView {
     func setupView() {
         self.backgroundColor = UIColor(hue: 88 / 360, saturation: 0.15, brightness: 1, alpha: 1)
 
+       // setupFlagImage()
         setupImageView()
         setupNameLabel()
         setupMapButton()
@@ -64,6 +69,29 @@ class UserDetailsHeaderView: UIView {
         imageView.makeRoundCorners(byRadius: imageSize / 2)
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
+    }
+
+    func setupFlagImage() {
+        guard let countryCode = nationality else { return }
+
+        flagImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(flagImageView)
+
+        let constraints = [
+            flagImageView.topAnchor.constraint(equalTo: topAnchor),
+            flagImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            flagImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            flagImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        let flag = Flag(countryCode: countryCode)!
+
+        flagImageView.image = flag.image(style: .square)
+        flagImageView.layer.opacity = 0.33
+//        flagImageView.contentMode = .scaleAspectFit
+
     }
 
     func setupNameLabel() {
