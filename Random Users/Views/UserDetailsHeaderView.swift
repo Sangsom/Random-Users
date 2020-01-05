@@ -40,7 +40,7 @@ class UserDetailsHeaderView: UIView {
     // MARK: - Custom methods
 
     func setupView() {
-        self.backgroundColor = UIColor(hue: 88 / 360, saturation: 0.15, brightness: 1, alpha: 1)
+       // self.backgroundColor = UIColor(hue: 88 / 360, saturation: 0.15, brightness: 1, alpha:
 
        // setupFlagImage()
         setupImageView()
@@ -90,8 +90,6 @@ class UserDetailsHeaderView: UIView {
 
         flagImageView.image = flag.image(style: .square)
         flagImageView.layer.opacity = 0.33
-//        flagImageView.contentMode = .scaleAspectFit
-
     }
 
     func setupNameLabel() {
@@ -107,7 +105,6 @@ class UserDetailsHeaderView: UIView {
 
         nameLabel.font = UIFont.systemFont(ofSize: 15)
         nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = .green
     }
 
     func setupMapButton() {
@@ -130,7 +127,5 @@ class UserDetailsHeaderView: UIView {
     @objc func showMap() {
         // Open map view
         delegate?.navigateToCustomViewController()
-        
-        // Pass location coordinates
     }
 }
