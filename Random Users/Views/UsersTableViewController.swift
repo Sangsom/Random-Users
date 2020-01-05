@@ -12,12 +12,16 @@ import FlagKit
 
 class UsersTableViewController: UITableViewController {
 
+    // MARK: - Properties
     var usersController: UsersController!
     var people = [Person]()
 
+    // MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         usersController = UsersController()
 
         updateUI()

@@ -29,10 +29,12 @@ class UserDetailsViewController: UIViewController {
     var sections = [Section]()
 
     // MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
         setupSectionData()
 
         setupHeader()
