@@ -25,6 +25,12 @@ class UserLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if self.traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
+
         setupUI()
     }
 
