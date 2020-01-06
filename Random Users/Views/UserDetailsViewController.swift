@@ -34,6 +34,7 @@ class UserDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.largeTitleDisplayMode = .never
 
         setupSectionData()
 
@@ -122,56 +123,50 @@ extension UserDetailsViewController: UITableViewDataSource {
         return sections.count
     }
 
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let vw = UIView()
-//        vw.backgroundColor = .red
-//
-//        //return sections[section].title
-//    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let vw = UIView()
-        vw.backgroundColor = .systemGray
-
-        let vwConstraints = [
-            vw.heightAnchor.constraint(equalToConstant: 40)
-        ]
-
-        NSLayoutConstraint.activate(vwConstraints)
-
-        // Horizontal container
-        let hStack = UIStackView()
-        hStack.axis = .horizontal
-        hStack.translatesAutoresizingMaskIntoConstraints = false
-        vw.addSubview(hStack)
-
-        let stackConstraints = [
-            hStack.topAnchor.constraint(equalTo: vw.topAnchor),
-            hStack.leadingAnchor.constraint(equalTo: vw.leadingAnchor),
-            hStack.trailingAnchor.constraint(equalTo: vw.trailingAnchor),
-            hStack.bottomAnchor.constraint(equalTo: vw.bottomAnchor)
-        ]
-
-        NSLayoutConstraint.activate(stackConstraints)
-
-        hStack.alignment = .center
-        hStack.distribution = .fillProportionally
-
-
-        // Image
-        let image = UIImage(systemName: "person")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        hStack.addArrangedSubview(imageView)
-
-        // Text
-        let title = UILabel()
-        title.text = sections[section].title
-        hStack.addArrangedSubview(title)
-
-        title.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -15).isActive = true
-
-        return vw
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let vw = UIView()
+//        vw.backgroundColor = .systemGray
+//
+//        let vwConstraints = [
+//            vw.heightAnchor.constraint(equalToConstant: 40)
+//        ]
+//
+//        NSLayoutConstraint.activate(vwConstraints)
+//
+//        let hStack = UIStackView()
+//        hStack.axis = .horizontal
+//        hStack.translatesAutoresizingMaskIntoConstraints = false
+//        vw.addSubview(hStack)
+//
+//        let stackConstraints = [
+//            hStack.topAnchor.constraint(equalTo: vw.topAnchor),
+//            hStack.leadingAnchor.constraint(equalTo: vw.leadingAnchor),
+//            hStack.trailingAnchor.constraint(equalTo: vw.trailingAnchor),
+//            hStack.bottomAnchor.constraint(equalTo: vw.bottomAnchor)
+//        ]
+//
+//        NSLayoutConstraint.activate(stackConstraints)
+//
+//        hStack.alignment = .center
+//        hStack.distribution = .fillProportionally
+//
+//        let image = UIImage(systemName: "person")
+//        let imageView = UIImageView(image: image)
+//        imageView.contentMode = .scaleAspectFit
+//        hStack.addArrangedSubview(imageView)
+//
+//        let title = UILabel()
+//        title.text = sections[section].title
+//        hStack.addArrangedSubview(title)
+//
+//        title.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -15).isActive = true
+//
+//        return vw
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].fields.count
