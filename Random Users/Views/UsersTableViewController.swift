@@ -20,7 +20,7 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         usersController = UsersController()
 
