@@ -68,7 +68,7 @@ class UserDetailsHeaderView: UIView {
 
         imageView.makeRoundCorners(byRadius: imageSize / 2)
         imageView.layer.borderWidth = 3.0
-        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
     }
 
     func setupFlagImage() {
