@@ -178,7 +178,17 @@ extension UserDetailsViewController: UITableViewDataSource {
         let dataValue = sectionData.fields[indexPath.row].value
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(dataType.capitalized): \(dataValue)"
+        if dataType == "gender" {
+            var emoji = ""
+            if dataValue == "male" {
+                emoji = "♂"
+            } else {
+                emoji = "♀"
+            }
+            cell.textLabel?.text = "\(dataType.capitalized): \(emoji)"
+        } else {
+            cell.textLabel?.text = "\(dataType.capitalized): \(dataValue)"
+        }
         return cell
     }
 }
