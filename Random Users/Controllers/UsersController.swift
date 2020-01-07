@@ -85,7 +85,6 @@ class UsersController {
     }
 
     func saveToContacts(user: Person) -> Bool {
-        print(user)
         let contact = CNMutableContact()
 
         if let url = user.picture,
@@ -119,16 +118,24 @@ class UsersController {
 
         // Save contact
         let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: nil)
 
-        //try! store.execute(saveRequest)
+        // Check if already exists
+        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: user.firstName!)
+        let contacts = try? store.unifiedContacts(matching: predicate, keysToFetch: [])
+        if contacts!.isEmpty {
+            let saveRequest = CNSaveRequest()
+            saveRequest.add(contact, toContainerWithIdentifier: nil)
 
-        do {
-            try store.execute(saveRequest)
-            return true
-        } catch {
+            do {
+                try store.execute(saveRequest)
+                return true
+            } catch {
+                return false
+            }
+        } else {
+            print("Already exists")
             return false
         }
+
     }
 }
