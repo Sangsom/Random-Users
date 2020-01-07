@@ -82,4 +82,8 @@ class UsersController {
 
         return person
     }
+
+    func saveToContacts(user: Person) {
+        print("Saving...", user)
+    }
 }

@@ -25,6 +25,7 @@ class UserDetailsViewController: UIViewController {
     var user: Person!
     var tableView: UITableView!
     var headerView: UserDetailsHeaderView!
+    var usersController: UsersController!
 
     var sections = [Section]()
 
@@ -33,6 +34,7 @@ class UserDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        usersController = UsersController()
         // Do any additional setup after loading the view.
         navigationItem.largeTitleDisplayMode = .never
 
@@ -128,7 +130,9 @@ class UserDetailsViewController: UIViewController {
     @objc func showActions() {
         let ac = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
 
-        let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default)
+        let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default) { _ in
+            self.usersController.saveToContacts(user: self.user)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         ac.addAction(saveToContactsAction)
