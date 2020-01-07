@@ -103,4 +103,15 @@ extension UsersTableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let commit = people[indexPath.row]
+            PersistanceService.context.delete(commit)
+            people.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            PersistanceService.saveContext()
+        }
+    }
 }
