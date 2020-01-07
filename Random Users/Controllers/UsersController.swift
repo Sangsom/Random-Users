@@ -84,7 +84,7 @@ class UsersController {
         return person
     }
 
-    func saveToContacts(user: Person) {
+    func saveToContacts(user: Person) -> Bool {
         print(user)
         let contact = CNMutableContact()
 
@@ -100,12 +100,12 @@ class UsersController {
         contact.emailAddresses = [homeEmail]
 
         contact.phoneNumbers = [
-            CNLabeledValue(label: CNLabelPhoneNumberMain, value: CNPhoneNumber(stringValue: user.phone!)),
-            CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: user.cellphone!))
+            CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: user.cellphone!)),
+            CNLabeledValue(label: CNLabelPhoneNumberMain, value: CNPhoneNumber(stringValue: user.phone!))
         ]
 
         let homeAddress = CNMutablePostalAddress()
-        homeAddress.street = "\(user.location!.streetName!), \(user.location!.streetNumber)"
+        homeAddress.street = "\(user.location!.streetNumber), \(user.location!.streetName!)"
         homeAddress.city = user.location!.city!
         homeAddress.state = user.location!.state!
         homeAddress.country = user.location!.country!
@@ -122,6 +122,13 @@ class UsersController {
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
 
-        try! store.execute(saveRequest)
+        //try! store.execute(saveRequest)
+
+        do {
+            try store.execute(saveRequest)
+            return true
+        } catch {
+            return false
+        }
     }
 }

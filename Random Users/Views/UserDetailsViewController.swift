@@ -131,7 +131,16 @@ class UserDetailsViewController: UIViewController {
         let ac = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
 
         let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default) { _ in
-            self.usersController.saveToContacts(user: self.user)
+            var msg = ""
+            if self.usersController.saveToContacts(user: self.user) {
+                msg = "User added to contacts successfully."
+            } else {
+                msg = "Failed to add user to contacts."
+            }
+
+            let ac = UIAlertController(title: "Saving to Contacts", message: msg, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
