@@ -189,6 +189,22 @@ extension UserDetailsViewController: UITableViewDataSource {
         } else {
             cell.textLabel?.text = "\(dataType.capitalized): \(dataValue)"
         }
+
+        if dataType == "nationality" {
+            cell.textLabel?.text = "Nationality: \(flag(country: dataValue))"
+        }
+
+        if dataType == "phone" {
+            cell.textLabel?.text = "📞: \(dataValue)"
+        }
+
+        if dataType == "cell" {
+            cell.textLabel?.text = "📱: \(dataValue)"
+        }
+
+        if dataType == "email" {
+            cell.textLabel?.text = "✉️: \(dataValue)"
+        }
         return cell
     }
 }
@@ -211,4 +227,20 @@ extension UserDetailsViewController: ChildNavigationDelegate {
 // MARK: - Protocols
 protocol ChildNavigationDelegate: class {
     func navigateToCustomViewController()
+}
+
+// MARK: - Helper methods
+
+/**
+ Use this function to return an emoji flag
+ - Parameter country: Two letter country code
+ - Returns: An emoji flag string
+ */
+func flag(country:String) -> String {
+    let base : UInt32 = 127397
+    var s = ""
+    for v in country.unicodeScalars {
+        s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+    }
+    return String(s)
 }
