@@ -1,0 +1,16 @@
+PODS:
+  - FlagKit (2.2)
+
+DEPENDENCIES:
+  - FlagKit
+
+SPEC REPOS:
+  trunk:
+    - FlagKit
+
+SPEC CHECKSUMS:
+  FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
+
+PODFILE CHECKSUM: e1193203d9a87c21ab283b55a3ebdc046dd05adb
+
+COCOAPODS: 1.8.4

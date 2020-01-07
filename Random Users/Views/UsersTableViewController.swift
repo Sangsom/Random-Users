@@ -8,15 +8,20 @@
 
 import UIKit
 import SwiftyJSON
+import FlagKit
 
 class UsersTableViewController: UITableViewController {
 
+    // MARK: - Properties
     var usersController: UsersController!
     var people = [Person]()
+
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         usersController = UsersController()
 
         updateUI()
@@ -76,11 +81,18 @@ extension UsersTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath)
         cell.textLabel?.text = people[indexPath.row].fullName
-        if let dob = people[indexPath.row].dob {
-            cell.detailTextLabel?.text = "\(dob)"
+
+        if let country = people[indexPath.row].location?.country,
+            let city = people[indexPath.row].location?.city {
+            cell.detailTextLabel?.text = "\(country), \(city)"
         } else {
             cell.detailTextLabel?.text = "N\\A"
         }
+
+        let countryCode = people[indexPath.row].nationality!
+        let flag = Flag(countryCode: countryCode)!
+        cell.imageView?.image = flag.image(style: .roundedRect)
+
         return cell
     }
 

@@ -29,10 +29,13 @@ class UserDetailsViewController: UIViewController {
     var sections = [Section]()
 
     // MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.largeTitleDisplayMode = .never
+
         setupSectionData()
 
         setupHeader()
@@ -79,7 +82,8 @@ class UserDetailsViewController: UIViewController {
     }
 
     func setupHeader() {
-        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!)
+        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!, nationality: user.nationality!)
+        headerView.delegate = self
         headerView.translatesAutoresizingMaskIntoConstraints = false
          view.addSubview(headerView)
 
@@ -122,6 +126,47 @@ extension UserDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let vw = UIView()
+//        vw.backgroundColor = .systemGray
+//
+//        let vwConstraints = [
+//            vw.heightAnchor.constraint(equalToConstant: 40)
+//        ]
+//
+//        NSLayoutConstraint.activate(vwConstraints)
+//
+//        let hStack = UIStackView()
+//        hStack.axis = .horizontal
+//        hStack.translatesAutoresizingMaskIntoConstraints = false
+//        vw.addSubview(hStack)
+//
+//        let stackConstraints = [
+//            hStack.topAnchor.constraint(equalTo: vw.topAnchor),
+//            hStack.leadingAnchor.constraint(equalTo: vw.leadingAnchor),
+//            hStack.trailingAnchor.constraint(equalTo: vw.trailingAnchor),
+//            hStack.bottomAnchor.constraint(equalTo: vw.bottomAnchor)
+//        ]
+//
+//        NSLayoutConstraint.activate(stackConstraints)
+//
+//        hStack.alignment = .center
+//        hStack.distribution = .fillProportionally
+//
+//        let image = UIImage(systemName: "person")
+//        let imageView = UIImageView(image: image)
+//        imageView.contentMode = .scaleAspectFit
+//        hStack.addArrangedSubview(imageView)
+//
+//        let title = UILabel()
+//        title.text = sections[section].title
+//        hStack.addArrangedSubview(title)
+//
+//        title.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -15).isActive = true
+//
+//        return vw
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].fields.count
@@ -133,11 +178,27 @@ extension UserDetailsViewController: UITableViewDataSource {
         let dataValue = sectionData.fields[indexPath.row].value
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(dataType): \(dataValue)"
+        cell.textLabel?.text = "\(dataType.capitalized): \(dataValue)"
         return cell
     }
 }
 
 extension UserDetailsViewController: UITableViewDelegate {
 
+}
+
+extension UserDetailsViewController: ChildNavigationDelegate {
+    func navigateToCustomViewController() {
+        let vc = UserLocationViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.name = user.fullName
+        vc.longitude = user.location?.longitude
+        vc.latitude = user.location?.latitude
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - Protocols
+protocol ChildNavigationDelegate: class {
+    func navigateToCustomViewController()
 }

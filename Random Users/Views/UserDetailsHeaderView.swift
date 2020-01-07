@@ -7,22 +7,28 @@
 //
 
 import UIKit
+import FlagKit
 
 class UserDetailsHeaderView: UIView {
 
     // MARK: - Properties
 
+    weak var delegate: ChildNavigationDelegate?
+
     var imageView = UIImageView()
+    var flagImageView = UIImageView()
     var imageURL: URL?
+    var nationality: String?
     var nameLabel = UILabel()
     var mapButton = UIButton(type: .system)
     var imageSize: CGFloat = 110
 
     // MARK: - Required methods
 
-    init(frame: CGRect, name: String, imageURL: URL) {
+    init(frame: CGRect, name: String, imageURL: URL, nationality: String) {
         self.nameLabel.text = name
         self.imageURL = imageURL
+        self.nationality = nationality
         super.init(frame: frame)
         setupView()
     }
@@ -34,8 +40,9 @@ class UserDetailsHeaderView: UIView {
     // MARK: - Custom methods
 
     func setupView() {
-        self.backgroundColor = .red
+       // self.backgroundColor = UIColor(hue: 88 / 360, saturation: 0.15, brightness: 1, alpha:
 
+       // setupFlagImage()
         setupImageView()
         setupNameLabel()
         setupMapButton()
@@ -61,7 +68,28 @@ class UserDetailsHeaderView: UIView {
 
         imageView.makeRoundCorners(byRadius: imageSize / 2)
         imageView.layer.borderWidth = 3.0
-        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+    }
+
+    func setupFlagImage() {
+        guard let countryCode = nationality else { return }
+
+        flagImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(flagImageView)
+
+        let constraints = [
+            flagImageView.topAnchor.constraint(equalTo: topAnchor),
+            flagImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            flagImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            flagImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        let flag = Flag(countryCode: countryCode)!
+
+        flagImageView.image = flag.image(style: .square)
+        flagImageView.layer.opacity = 0.33
     }
 
     func setupNameLabel() {
@@ -77,7 +105,6 @@ class UserDetailsHeaderView: UIView {
 
         nameLabel.font = UIFont.systemFont(ofSize: 15)
         nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = .green
     }
 
     func setupMapButton() {
@@ -99,6 +126,6 @@ class UserDetailsHeaderView: UIView {
 
     @objc func showMap() {
         // Open map view
-        // Pass location coordinates
+        delegate?.navigateToCustomViewController()
     }
 }
