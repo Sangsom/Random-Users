@@ -21,7 +21,6 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         usersController = UsersController()
 
         updateUI()
@@ -31,8 +30,15 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Custom methods
 
     func updateUI() {
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Random Users"
+
+        tableView.allowsMultipleSelectionDuringEditing = true
+
+
+
+        navigationItem.leftBarButtonItem = editButtonItem
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -64,6 +70,18 @@ class UsersTableViewController: UITableViewController {
 
         task.resume()
 
+    }
+
+    @objc func deleteRows() {
+        if let selectedRows = tableView.indexPathsForSelectedRows {
+            for var selectionIndex in selectedRows {
+                while selectionIndex.item >= people.count {
+                    selectionIndex.item -= 1
+                }
+                tableView(tableView, commit: .delete, forRowAt: selectionIndex)
+            }
+            isEditing = false
+        }
     }
 }
 
@@ -97,10 +115,12 @@ extension UsersTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "UserDetails") as? UserDetailsViewController {
-            // Pass properties
-            vc.user = people[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+        if !tableView.isEditing {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "UserDetails") as? UserDetailsViewController {
+                // Pass properties
+                vc.user = people[indexPath.row]
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 
@@ -109,9 +129,26 @@ extension UsersTableViewController {
             let commit = people[indexPath.row]
             PersistanceService.context.delete(commit)
             people.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .left)
 
             PersistanceService.saveContext()
+        }
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+
+        if tableView.isEditing {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: "Delete",
+                style: .plain,
+                target: self,
+                action: #selector(deleteRows))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addUser))
         }
     }
 }
