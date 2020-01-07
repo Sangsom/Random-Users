@@ -9,6 +9,7 @@
 import CoreData
 import Foundation
 import SwiftyJSON
+import Contacts
 
 class UsersController {
 
@@ -84,6 +85,43 @@ class UsersController {
     }
 
     func saveToContacts(user: Person) {
-        print("Saving...", user)
+        print(user)
+        let contact = CNMutableContact()
+
+        if let url = user.picture,
+            let data = try? Data(contentsOf: url) {
+            contact.imageData = data
+        }
+
+        contact.givenName = user.firstName!
+        contact.familyName = user.lastName!
+
+        let homeEmail = CNLabeledValue(label: CNLabelHome, value: user.email! as NSString)
+        contact.emailAddresses = [homeEmail]
+
+        contact.phoneNumbers = [
+            CNLabeledValue(label: CNLabelPhoneNumberMain, value: CNPhoneNumber(stringValue: user.phone!)),
+            CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: user.cellphone!))
+        ]
+
+        let homeAddress = CNMutablePostalAddress()
+        homeAddress.street = "\(user.location!.streetName!), \(user.location!.streetNumber)"
+        homeAddress.city = user.location!.city!
+        homeAddress.state = user.location!.state!
+        homeAddress.country = user.location!.country!
+        homeAddress.postalCode = user.location!.postcode!
+        contact.postalAddresses = [CNLabeledValue(label: CNLabelHome, value: homeAddress)]
+
+        if let date = user.dob {
+            let calendar = Calendar.current
+            contact.birthday = calendar.dateComponents([.year, .month, .day], from: date)
+        }
+
+        // Save contact
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+
+        try! store.execute(saveRequest)
     }
 }
