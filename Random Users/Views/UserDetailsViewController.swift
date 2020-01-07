@@ -126,7 +126,15 @@ class UserDetailsViewController: UIViewController {
 
     // MARK: - Objc methods
     @objc func showActions() {
-        print("Saving")
+        let ac = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
+
+        let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        ac.addAction(saveToContactsAction)
+        ac.addAction(cancelAction)
+
+        present(ac, animated: true)
     }
 }
 
