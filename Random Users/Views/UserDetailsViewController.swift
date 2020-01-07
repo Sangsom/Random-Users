@@ -38,6 +38,7 @@ class UserDetailsViewController: UIViewController {
 
         setupSectionData()
 
+        setupUI()
         setupHeader()
         setupTableView()
     }
@@ -81,6 +82,13 @@ class UserDetailsViewController: UIViewController {
         sections.append(loginSection)
     }
 
+    func setupUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(showActions))
+    }
+
     func setupHeader() {
         headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!, nationality: user.nationality!)
         headerView.delegate = self
@@ -114,6 +122,11 @@ class UserDetailsViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
+    }
+
+    // MARK: - Objc methods
+    @objc func showActions() {
+        print("Saving")
     }
 }
 
