@@ -20,7 +20,7 @@
 		1B6B678E23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6B678D23BB09EE003F9E07 /* UIImageView+makeRoundCorners.swift */; };
 		1B6B679023BE0C2A003F9E07 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6B678F23BE0C2A003F9E07 /* UserLocationViewController.swift */; };
 		1B72FFE023B62F6C00FA60BA /* UserDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B72FFDF23B62F6C00FA60BA /* UserDetailsHeaderView.swift */; };
-		1B997CFC23B0A43800CC008E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 1B997CFB23B0A43800CC008E /* SwiftPackageProductDependency */; };
+		1B997CFC23B0A43800CC008E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1B997CFB23B0A43800CC008E /* SwiftyJSON */; };
 		1B997CFE23B0C90800CC008E /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997CFD23B0C90800CC008E /* UsersTableViewController.swift */; };
 		1B997D0123B0CD6900CC008E /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B997D0023B0CD6900CC008E /* UsersController.swift */; };
 		1BA0ACB223ABBBC800699D6F /* PersonData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0ACB023ABBBC800699D6F /* PersonData.xcdatamodeld */; };
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B997CFC23B0A43800CC008E /* BuildFile in Frameworks */,
+				1B997CFC23B0A43800CC008E /* SwiftyJSON in Frameworks */,
 				AA3ABE582565A3BBA8047AC0 /* Pods_Random_Users.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +96,6 @@
 				1BA0ACB023ABBBC800699D6F /* PersonData.xcdatamodeld */,
 				1B3D063623ABB89E0035BFC8 /* Core Data */,
 				1B3D061223ABB5F80035BFC8 /* AppDelegate.swift */,
-				1B3D062C23ABB8000035BFC8 /* PersistanceService.swift */,
 				1B3D061823ABB5F80035BFC8 /* Main.storyboard */,
 				1B3D061B23ABB5F90035BFC8 /* Assets.xcassets */,
 				1B3D061D23ABB5F90035BFC8 /* LaunchScreen.storyboard */,
@@ -131,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				1B997D0023B0CD6900CC008E /* UsersController.swift */,
+				1B3D062C23ABB8000035BFC8 /* PersistanceService.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,7 +165,6 @@
 				635BD225C39037BF010E544F /* Pods-Random Users.debug.xcconfig */,
 				05B95801D6250984D26F2D46 /* Pods-Random Users.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -188,7 +187,7 @@
 			);
 			name = "Random Users";
 			packageProductDependencies = (
-				1B997CFB23B0A43800CC008E /* SwiftPackageProductDependency */,
+				1B997CFB23B0A43800CC008E /* SwiftyJSON */,
 			);
 			productName = "Random Users";
 			productReference = 1B3D060F23ABB5F80035BFC8 /* Random Users.app */;
@@ -219,7 +218,7 @@
 			);
 			mainGroup = 1B3D060623ABB5F80035BFC8;
 			packageReferences = (
-				1B997CFA23B0A43800CC008E /* RemoteSwiftPackageReference */,
+				1B997CFA23B0A43800CC008E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 1B3D061023ABB5F80035BFC8 /* Products */;
 			projectDirPath = "";
@@ -505,7 +504,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1B997CFA23B0A43800CC008E /* RemoteSwiftPackageReference */ = {
+		1B997CFA23B0A43800CC008E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -516,9 +515,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1B997CFB23B0A43800CC008E /* SwiftPackageProductDependency */ = {
+		1B997CFB23B0A43800CC008E /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1B997CFA23B0A43800CC008E /* RemoteSwiftPackageReference */;
+			package = 1B997CFA23B0A43800CC008E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
