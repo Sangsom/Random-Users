@@ -38,10 +38,16 @@ class UsersTableViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = editButtonItem
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let sortButton = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(openSortMenu))
+        let addUserButton = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addUser))
+
+        navigationItem.rightBarButtonItems = [addUserButton, sortButton]
     }
 
     func loadUsers() {
@@ -60,6 +66,7 @@ class UsersTableViewController: UITableViewController {
             if let data = try? JSON(data: data!) {
                 DispatchQueue.main.async {
                     let addedPerson = self.usersController.addUser(from: data)
+
                     self.people.append(addedPerson)
                     self.tableView.reloadData()
                     self.loadUsers()
@@ -80,6 +87,20 @@ class UsersTableViewController: UITableViewController {
             }
             isEditing = false
         }
+    }
+    @objc func openSortMenu() {
+        let sortMenu = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+
+        let lastNameSort = UIAlertAction(title: "Last Name", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+
+        sortMenu.addAction(lastNameSort)
+        sortMenu.addAction(cancelAction)
+        present(sortMenu, animated: true)
     }
 }
 

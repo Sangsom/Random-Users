@@ -13,12 +13,18 @@ import Contacts
 
 class UsersController {
 
+    var sortDescriptor: NSSortDescriptor?
+
     func loadUsers() -> [Person] {
         var usersList = [Person]()
 
         let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        if sortDescriptor == nil {
+            sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+        }
+
+        fetchRequest.sortDescriptors = [sortDescriptor!]
 
         do {
             let people = try PersistanceService.context.fetch(fetchRequest)
