@@ -38,6 +38,10 @@ class UsersTableViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = editButtonItem
 
+        let shareButton = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(sharePerson))
         let sortButton = UIBarButtonItem(
             image: UIImage(systemName: "arrow.up.arrow.down"),
             style: .plain,
@@ -48,7 +52,7 @@ class UsersTableViewController: UITableViewController {
             target: self,
             action: #selector(addUser))
 
-        navigationItem.rightBarButtonItems = [addUserButton, sortButton]
+        navigationItem.rightBarButtonItems = [addUserButton, sortButton, shareButton]
     }
 
     func loadUsers() {
@@ -132,6 +136,10 @@ class UsersTableViewController: UITableViewController {
         sortMenu.addAction(countrySortDesc)
         sortMenu.addAction(cancelAction)
         present(sortMenu, animated: true)
+    }
+
+    @objc func sharePerson() {
+        print("Sharing...")
     }
 }
 
