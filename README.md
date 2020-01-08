@@ -13,3 +13,5 @@ App developed by using [Random User Generator API](https://randomuser.me/) that 
 
 ## Frameworks used:
 - Core Data, Contacts, SwiftyJSON, FlagKit, MapKit
+
+![Random Users](https://media.giphy.com/media/TfuIiGr8BCp2tTETsY/giphy.gif)
