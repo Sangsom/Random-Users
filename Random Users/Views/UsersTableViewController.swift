@@ -121,7 +121,7 @@ class UsersTableViewController: UITableViewController {
             self.loadUsers()
             self.tableView.reloadData()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         sortMenu.addAction(firstNameSortAsc)
         sortMenu.addAction(firstNameSortDesc)
