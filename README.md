@@ -9,6 +9,7 @@ App developed by using [Random User Generator API](https://randomuser.me/) that 
 - Saving users to phone Contacts
 - Parsing `JSON` with SwiftyJSON API
 - Showing user nationality flag with (FlagKit)[https://github.com/madebybowtie/FlagKit]
+- Swipe to delete or delete multiple users
 
 ## Frameworks used:
 - Core Data, Contacts, SwiftyJSON, FlagKit, MapKit
