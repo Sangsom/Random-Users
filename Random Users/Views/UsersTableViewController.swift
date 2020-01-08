@@ -39,7 +39,8 @@ class UsersTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
 
         let sortButton = UIBarButtonItem(
-            barButtonSystemItem: .action,
+            image: UIImage(systemName: "arrow.up.arrow.down"),
+            style: .plain,
             target: self,
             action: #selector(openSortMenu))
         let addUserButton = UIBarButtonItem(
