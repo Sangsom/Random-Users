@@ -17,6 +17,8 @@ class UsersController {
         var usersList = [Person]()
 
         let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
 
         do {
             let people = try PersistanceService.context.fetch(fetchRequest)
