@@ -62,12 +62,12 @@ class UsersTableViewController: UITableViewController {
                     let addedPerson = self.usersController.addUser(from: data)
                     self.people.append(addedPerson)
                     self.tableView.reloadData()
+                    self.loadUsers()
                 }
             }
         }
 
         task.resume()
-
     }
 
     @objc func deleteRows() {
