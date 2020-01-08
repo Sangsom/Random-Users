@@ -57,7 +57,9 @@ class UserLocationViewController: UIViewController {
 
         let lat = (latitude as NSString).doubleValue
         let lon = (longitude as NSString).doubleValue
-        let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))
+        let locationCoordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(lat),
+            longitude: CLLocationDegrees(lon))
         let userLocation = UserLocation(title: name, coordinate: locationCoordinate)
         mapView.setCenter(locationCoordinate, animated: true)
         mapView.addAnnotation(userLocation)

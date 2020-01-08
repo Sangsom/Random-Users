@@ -36,8 +36,6 @@ class UsersTableViewController: UITableViewController {
 
         tableView.allowsMultipleSelectionDuringEditing = true
 
-
-
         navigationItem.leftBarButtonItem = editButtonItem
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -54,7 +52,7 @@ class UsersTableViewController: UITableViewController {
     @objc func addUser() {
         let url = URL(string: "https://randomuser.me/api/")!
 
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 print("Error on loading", error)
             }
@@ -116,15 +114,18 @@ extension UsersTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !tableView.isEditing {
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "UserDetails") as? UserDetailsViewController {
+            if let userDetailsVC = storyboard?.instantiateViewController(withIdentifier: "UserDetails")
+                as? UserDetailsViewController {
                 // Pass properties
-                vc.user = people[indexPath.row]
-                navigationController?.pushViewController(vc, animated: true)
+                userDetailsVC.user = people[indexPath.row]
+                navigationController?.pushViewController(userDetailsVC, animated: true)
             }
         }
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let commit = people[indexPath.row]
             PersistanceService.context.delete(commit)

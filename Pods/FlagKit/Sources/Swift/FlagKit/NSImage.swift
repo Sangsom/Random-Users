@@ -7,6 +7,7 @@
 import AppKit
 
 extension NSImage {
+    // swiftlint:disable:next line_length
     @available(*, unavailable, message: "FlagKit no longer has default styling of flags, create a Flag model and generate an image with the specified style") public convenience init?(flagImageWithCountryCode countryCode: String) {
         // It'd be preferable to return the image directly, but we can't do that in a convenience intializer
         guard let image = FlagKit.assetBundle.image(forResource: countryCode) else { return nil }

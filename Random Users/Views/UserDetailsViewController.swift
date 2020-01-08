@@ -57,7 +57,7 @@ class UserDetailsViewController: UIViewController {
             UserData(type: "nationality", value: user.nationality!),
             UserData(type: "phone", value: user.phone!),
             UserData(type: "cell", value: user.cellphone!),
-            UserData(type: "birthday", value: dateFormatter.string(from: user.dob!)),
+            UserData(type: "birthday", value: dateFormatter.string(from: user.dob!))
         ]
         let personalDetailsSection = Section(title: "Personal Details", fields: personalDetailsFields)
 
@@ -92,7 +92,10 @@ class UserDetailsViewController: UIViewController {
     }
 
     func setupHeader() {
-        headerView = UserDetailsHeaderView(frame: .zero, name: user.fullName, imageURL: user.picture!, nationality: user.nationality!)
+        headerView = UserDetailsHeaderView(
+            frame: .zero, name: user.fullName,
+            imageURL: user.picture!,
+            nationality: user.nationality!)
         headerView.delegate = self
         headerView.translatesAutoresizingMaskIntoConstraints = false
          view.addSubview(headerView)
@@ -128,7 +131,7 @@ class UserDetailsViewController: UIViewController {
 
     // MARK: - Objc methods
     @objc func showActions() {
-        let ac = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
+        let actionAC = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
 
         let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default) { _ in
             var msg = ""
@@ -141,17 +144,17 @@ class UserDetailsViewController: UIViewController {
             default:
                 msg = "User added to contacts successfully."
             }
-            
-            let ac = UIAlertController(title: "Saving to Contacts", message: msg, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
+
+            let savingAC = UIAlertController(title: "Saving to Contacts", message: msg, preferredStyle: .alert)
+            savingAC.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(savingAC, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-        ac.addAction(saveToContactsAction)
-        ac.addAction(cancelAction)
+        actionAC.addAction(saveToContactsAction)
+        actionAC.addAction(cancelAction)
 
-        present(ac, animated: true)
+        present(actionAC, animated: true)
     }
 }
 
@@ -164,7 +167,6 @@ extension UserDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
-    
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let vw = UIView()
 //        vw.backgroundColor = .systemGray
@@ -253,12 +255,12 @@ extension UserDetailsViewController: UITableViewDelegate {
 
 extension UserDetailsViewController: ChildNavigationDelegate {
     func navigateToCustomViewController() {
-        let vc = UserLocationViewController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.name = user.fullName
-        vc.longitude = user.location?.longitude
-        vc.latitude = user.location?.latitude
-        navigationController?.pushViewController(vc, animated: true)
+        let userLocationVC = UserLocationViewController()
+        userLocationVC.modalPresentationStyle = .fullScreen
+        userLocationVC.name = user.fullName
+        userLocationVC.longitude = user.location?.longitude
+        userLocationVC.latitude = user.location?.latitude
+        navigationController?.pushViewController(userLocationVC, animated: true)
     }
 }
 
@@ -274,11 +276,11 @@ protocol ChildNavigationDelegate: class {
  - Parameter country: Two letter country code
  - Returns: An emoji flag string
  */
-func flag(country:String) -> String {
-    let base : UInt32 = 127397
-    var s = ""
-    for v in country.unicodeScalars {
-        s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+func flag(country: String) -> String {
+    let base: UInt32 = 127397
+    var string = ""
+    for value in country.unicodeScalars {
+        string.unicodeScalars.append(UnicodeScalar(base + value.value)!)
     }
-    return String(s)
+    return String(string)
 }

@@ -113,7 +113,7 @@ class UserDetailsHeaderView: UIView {
 
         let constraints = [
             mapButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            mapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            mapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ]
 
         NSLayoutConstraint.activate(constraints)

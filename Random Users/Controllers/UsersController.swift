@@ -28,6 +28,7 @@ class UsersController {
         return usersList
     }
 
+    // swiftlint:disable:next function_body_length
     func addUser(from json: JSON) -> Person {
         let person = Person(context: PersistanceService.context)
 
