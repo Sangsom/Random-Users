@@ -84,7 +84,7 @@ class UsersController {
         return person
     }
 
-    func saveToContacts(user: Person) -> Bool {
+    func saveToContacts(user: Person) -> ContactsError? {
         let contact = CNMutableContact()
 
         if let url = user.picture,
@@ -128,14 +128,19 @@ class UsersController {
 
             do {
                 try store.execute(saveRequest)
-                return true
             } catch {
-                return false
+                return ContactsError.couldNotSave
             }
         } else {
             print("Already exists")
-            return false
+            return ContactsError.alreadyExists
         }
 
+        return nil
     }
+}
+
+enum ContactsError: Error {
+    case alreadyExists
+    case couldNotSave
 }

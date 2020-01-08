@@ -132,12 +132,16 @@ class UserDetailsViewController: UIViewController {
 
         let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default) { _ in
             var msg = ""
-            if self.usersController.saveToContacts(user: self.user) {
-                msg = "User added to contacts successfully."
-            } else {
-                msg = "Failed to add user to contacts."
-            }
 
+            switch self.usersController.saveToContacts(user: self.user) {
+            case .alreadyExists:
+                msg = "User already exsists."
+            case .couldNotSave:
+                msg = "Failed to add user to contacts, please try again."
+            default:
+                msg = "User added to contacts successfully."
+            }
+            
             let ac = UIAlertController(title: "Saving to Contacts", message: msg, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
