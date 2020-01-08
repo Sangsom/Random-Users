@@ -91,14 +91,44 @@ class UsersTableViewController: UITableViewController {
     @objc func openSortMenu() {
         let sortMenu = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
 
-        let lastNameSort = UIAlertAction(title: "Last Name", style: .default) { _ in
+        let firstNameSortAsc = UIAlertAction(title: "First Name ↑", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let firstNameSortDesc = UIAlertAction(title: "First Name ↓", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "firstName", ascending: false)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let lastNameSortAsc = UIAlertAction(title: "Last Name ↑", style: .default) { _ in
             self.usersController.sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let lastNameSortDesc = UIAlertAction(title: "Last Name ↓", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "lastName", ascending: false)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let countrySortAsc = UIAlertAction(title: "Country ↑", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "location.country", ascending: true)
+            self.loadUsers()
+            self.tableView.reloadData()
+        }
+        let countrySortDesc = UIAlertAction(title: "Country ↓", style: .default) { _ in
+            self.usersController.sortDescriptor = NSSortDescriptor(key: "location.country", ascending: false)
             self.loadUsers()
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
 
-        sortMenu.addAction(lastNameSort)
+        sortMenu.addAction(firstNameSortAsc)
+        sortMenu.addAction(firstNameSortDesc)
+        sortMenu.addAction(lastNameSortAsc)
+        sortMenu.addAction(lastNameSortDesc)
+        sortMenu.addAction(countrySortAsc)
+        sortMenu.addAction(countrySortDesc)
         sortMenu.addAction(cancelAction)
         present(sortMenu, animated: true)
     }
