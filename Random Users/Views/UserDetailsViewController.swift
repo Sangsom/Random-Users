@@ -133,9 +133,6 @@ class UserDetailsViewController: UIViewController {
     @objc func showActions() {
         let actionAC = UIAlertController(title: nil, message: "Choose action", preferredStyle: .actionSheet)
 
-        let shareAction = UIAlertAction(title: "Share", style: .default) { _ in
-            print("Sharing to...")
-        }
         let saveToContactsAction = UIAlertAction(title: "Save to Contacts", style: .default) { _ in
             var msg = ""
 
@@ -154,7 +151,6 @@ class UserDetailsViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-        actionAC.addAction(shareAction)
         actionAC.addAction(saveToContactsAction)
         actionAC.addAction(cancelAction)
 
